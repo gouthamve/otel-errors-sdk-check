@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'sinatra', '~> 4.0'
+gem 'puma', '~> 6.0'
+gem 'rackup', '~> 2.1'
+gem 'opentelemetry-sdk', '~> 1.5'
+gem 'opentelemetry-exporter-otlp', '~> 0.28'
+gem 'opentelemetry-instrumentation-all', '~> 0.65'

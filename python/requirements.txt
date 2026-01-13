@@ -1,0 +1,4 @@
+flask>=3.0.0
+opentelemetry-distro
+opentelemetry-exporter-otlp
+opentelemetry-exporter-otlp-proto-http
