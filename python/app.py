@@ -14,13 +14,19 @@ def hello():
 
 @app.route("/throw-error")
 def error():
-    logger.error("About to throw an intentional error")
+    logger.warn("About to throw an intentional error")
+    # it will be logged by flask using python logging package
+    # which is supported by OTel.
+    # no need for custom handler
     raise ValueError("Intentional error from Python Flask application")
 
-@app.errorhandler(Exception)
-def handle_exception(e):
-    logger.exception("Unhandled error occurred")
-    return f"Error: {str(e)}", 500
+@app.route("/manual-error")
+def manual_error():
+    try:
+        raise ValueError("Intentional error from Python Flask application")
+    except ValueError as e:
+        logger.error("Caught an intentional error", exc_info=e)
+        return "we handled the error"
 
 if __name__ == "__main__":
     logger.info("Starting Python Flask app on port 8080")
